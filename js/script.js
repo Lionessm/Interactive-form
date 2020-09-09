@@ -10,19 +10,25 @@ function checkJobRole(val){
 }
 
 
-let colorOptions = document.querySelector("option[value='cornflowerblue']");
-console.log("colorOptions" + colorOptions);
+//let colorOptions = document.querySelector("option[value='cornflowerblue']");
+//console.log("colorOptions" + colorOptions);
 
 function designOption(val){
     let elementColor;
     elementColor = document.getElementById('shirt-colors');
+    const jsPunsShirts = document.getElementsByClassName('js-puns-shirt');
+    console.log("jsPunsShirts" + jsPunsShirts);
 
-    if (val === 'js puns')
+    if (val === 'js puns') {
         elementColor.style.display = 'inherit';
-    else if (val === 'heart js')
+        for (let i = 0; i < jsPunsShirts.length; i++) {
+            jsPunsShirts[i].style.display = 'inherit';
+        }
+    } else if (val === 'heart js') {
         elementColor.style.display = 'inherit';
-    else
+    } else {
         elementColor.style.display = 'none';
+    }
 }
 
 
