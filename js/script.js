@@ -1,3 +1,4 @@
+let totalCost = 0;
 
 // display input box for title if others are selected
 
@@ -53,13 +54,17 @@ function designOption(val){
 const checkboxes = document.querySelectorAll('.activities input');
 
 // Event listener for checkboxes
-
+console.log("se opreste oare");
 document.querySelector('.activities').addEventListener('change', (e) => {
+
+    console.log("se opreste oare 1");
+
     let clicked = e.target;
     let clickedType = clicked.getAttribute('data-day-and-time');
     for ( let i = 0; i < checkboxes.length; i++ ) {
         let checkboxType = checkboxes[i].getAttribute('data-day-and-time');
-// disabling other checkboxes if the attribute 'data-day-and-time' is the same
+
+        // disabling other checkboxes if the attribute 'data-day-and-time' is the same
         if (clickedType === checkboxType && clicked !== checkboxes[i]) {
             if (clicked.checked) {
                 checkboxes[i].disabled = true;
@@ -68,7 +73,17 @@ document.querySelector('.activities').addEventListener('change', (e) => {
             }
         }
     }
+
+    let checkboxCost = clicked.getAttribute('data-cost');
+    totalCost += parseInt(checkboxCost);
+
+    let total = document.createElement('span');
+    total.textContent = "Total: " + totalCost;
+
+    let activities = document.getElementById('activities');
+    activities.appendChild(total);
 });
+
 
 
 
