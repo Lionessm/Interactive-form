@@ -77,7 +77,7 @@ document.querySelector('.activities').addEventListener('change', (e) => {
     let checkboxCost = clicked.getAttribute('data-cost');
     totalCost += parseInt(checkboxCost);
 
-    let total = document.createElement('span');
+    let total = document.getElementById('total-amount');
     total.textContent = "Total: " + totalCost;
 
     let activities = document.getElementById('activities');
