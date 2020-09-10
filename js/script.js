@@ -46,8 +46,38 @@ function designOption(val){
     }
 }
 
-
-
 //colorOptions.hidden = true;
+
+/* Variable to store all the checkboxes
+ */
+const checkboxes = document.querySelectorAll('.activities input');
+
+// Event listener for checkboxes
+
+document.querySelector('.activities').addEventListener('change', (e) => {
+    let clicked = e.target;
+    let clickedType = clicked.getAttribute('data-day-and-time');
+    for ( let i = 0; i < checkboxes.length; i++ ) {
+        let checkboxType = checkboxes[i].getAttribute('data-day-and-time');
+// disabling other checkboxes if the attribute 'data-day-and-time' is the same
+        if (clickedType === checkboxType && clicked !== checkboxes[i]) {
+            if (clicked.checked) {
+                checkboxes[i].disabled = true;
+            } else {
+                checkboxes[i].disabled = false;
+            }
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
 
 
