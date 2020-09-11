@@ -54,10 +54,7 @@ function designOption(val){
 const checkboxes = document.querySelectorAll('.activities input');
 
 // Event listener for checkboxes
-console.log("se opreste oare");
 document.querySelector('.activities').addEventListener('change', (e) => {
-
-    console.log("se opreste oare 1");
 
     let clicked = e.target;
     let clickedType = clicked.getAttribute('data-day-and-time');
@@ -83,8 +80,7 @@ document.querySelector('.activities').addEventListener('change', (e) => {
     }
 
     let total = document.getElementById('total-amount');
-    total.textContent = "Total: " + totalCost;
-
+    total.textContent = "Total: $" + totalCost;
 
 
     let activities = document.getElementById('activities');
@@ -92,9 +88,30 @@ document.querySelector('.activities').addEventListener('change', (e) => {
 });
 
 
+const creditCard = document.getElementById('credit-card');
+const payPal = document.getElementById('paypal');
+payPal.style.display = 'none';
+const bitcoin = document.getElementById('bitcoin');
+bitcoin.style.display = 'none';
+const paymentMethod = document.getElementById("payment");
+console.log('paymentMethod ' + paymentMethod);
 
-
-
+paymentMethod.addEventListener('change', (e) => {
+    let selected = e.target.value;
+    if (selected === 'paypal') {
+        creditCard.style.display = 'none';
+        payPal.style.display = 'inherit';
+        bitcoin.style.display = 'none';
+    } else if (selected === 'bitcoin') {
+        bitcoin.style.display = 'inherit';
+        payPal.style.display = 'none';
+        creditCard.style.display = 'none';
+    } else if (selected === 'credit card') {
+        bitcoin.style.display = 'none';
+        payPal.style.display = 'none';
+        creditCard.style.display = 'inherit';
+    }
+});
 
 
 
