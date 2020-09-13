@@ -1,9 +1,9 @@
 let totalCost = 0;
 const otherTitle= document.getElementById('other-title');
 otherTitle.style.display = 'none';
-console.log('ajunge aici');
-// display input box for title if 'others' option is selected:
 
+
+// Display input box for title if 'others' option is selected:
 function checkJobRole(val){
     const element=document.getElementById('other-title');
     if (val === 'other')
@@ -12,9 +12,7 @@ function checkJobRole(val){
         element.style.display = 'none';
 }
 
-
-
-// display the options elements for the shirts
+// Display the options elements for the shirts
 function designOption(val){
     let elementColor;
     elementColor = document.getElementById('shirt-colors');
@@ -23,7 +21,7 @@ function designOption(val){
 
     if (val === 'js puns') {
 
-        // Make all the others invisible
+        // Make all the others hidden
         for (let i = 0; i < jsShirt.length; i++) {
             jsShirt[i].style.display = 'none';
         }
@@ -34,7 +32,7 @@ function designOption(val){
         }
     } else if (val === 'heart js') {
 
-        // Make all the other hidden
+        // Make all the others hidden
         for (let i = 0; i < jsPunsShirts.length; i++) {
             jsPunsShirts[i].style.display = 'none';
         }
@@ -49,10 +47,9 @@ function designOption(val){
     }
 }
 
-
 const checkboxes = document.querySelectorAll('.activities input');
 
-// Event listener for checkboxes:
+// Event listener for checkboxes
 document.querySelector('.activities').addEventListener('change', (e) => {
 
     let clicked = e.target;
@@ -60,7 +57,7 @@ document.querySelector('.activities').addEventListener('change', (e) => {
     for ( let i = 0; i < checkboxes.length; i++ ) {
         let checkboxType = checkboxes[i].getAttribute('data-day-and-time');
 
-        // disabling other checkboxes if the attribute 'data-day-and-time' is the same
+        // Disabling other checkboxes if the attribute 'data-day-and-time' is the same
         if (clickedType === checkboxType && clicked !== checkboxes[i]) {
             if (clicked.checked) {
                 checkboxes[i].disabled = true;
@@ -70,7 +67,7 @@ document.querySelector('.activities').addEventListener('change', (e) => {
         }
     }
 
-    //The total cost of the selected activities:
+    //The total cost of the selected activities
     let checkboxCost = clicked.getAttribute('data-cost');
 
     // Adding or subtracting the checkbox sum, when checkbox is checked or unchecked
@@ -80,25 +77,20 @@ document.querySelector('.activities').addEventListener('change', (e) => {
         totalCost += parseInt(checkboxCost);
     }
 
+    // Inserting the total amount in the DOM
     let total = document.getElementById('total-amount');
     total.textContent = "Total: $" + totalCost;
-
-
-    let activities = document.getElementById('activities');
-    activities.appendChild(total);
 });
 
-// Payment options validating section.
+// Payment options validating section
 const creditCard = document.getElementById('credit-card');
 const payPal = document.getElementById('paypal');
 payPal.style.display = 'none';
 const bitcoin = document.getElementById('bitcoin');
 bitcoin.style.display = 'none';
 const paymentMethod = document.getElementById("payment");
-console.log('paymentMethod ' + paymentMethod);
 
-//Display the payment options: the credit card option is displayed by default, the others are displayed when selected
-
+// Display the payment options: the credit card option is displayed by default, the others are displayed when selected
 paymentMethod.addEventListener('change', (e) => {
     let selected = e.target.value;
     if (selected === 'paypal') {
@@ -116,14 +108,14 @@ paymentMethod.addEventListener('change', (e) => {
     }
 });
 
-//Name field, email and activities cannot be blank. Selecting the nodes of these elements:
+// Name field, email and activities cannot be blank. Selecting the nodes of these elements:
 const form = document.querySelector("form");
 const name = document.querySelector("#name");
 const email = document.querySelector("#mail");
 const activitiesContainer = document.querySelector("#activities");
 const activitiesInput = document.querySelectorAll("#activities input");
 
-//Function that validates if the name has more than 1 character
+// Function that validates if the name has more than 1 character
 function nameValidator () {
     let nameValue = name.value;
 
@@ -137,7 +129,7 @@ function nameValidator () {
 
 }
 
-//Function that validates if the email has an '@' character and a '.' character:
+// Function that validates if the email has an '@' character and a '.' character:
 function emailValidator () {
     let emailValue = email.value;
     let indexValue = emailValue.indexOf(`@`);
@@ -151,7 +143,7 @@ function emailValidator () {
     }
 }
 
-//Function that validates if at least one of the activities has been checked:
+// Function that validates if at least one of the activities has been checked
 function activitiesValidator (){
     for (let i = 0; i < activitiesInput.length; i++) {
         if (activitiesInput[i].checked) {
@@ -162,7 +154,7 @@ function activitiesValidator (){
     activitiesContainer.style.border = '2px solid red';
 }
 
-//Function that validates the payment input (for card number, zipcode and cvv) if the credit card option was selected:
+// Function that validates the payment input (for card number, zipcode and cvv) if the credit card option was selected
 function paymentValidator(){
     let creditCardNumber = document.getElementById('cc-num');
     let zipCode = document.getElementById('zip');
@@ -172,7 +164,7 @@ function paymentValidator(){
     let cvvValue = cvv.value;
 
     let response = true;
-    // validating card number and displaying change (red border) if card number is invalid (not 13-16 digits)
+    // Validating card number and displaying change (red border) if card number is invalid (not 13-16 digits)
     if (creditCardNumberValue.length >= 13 && creditCardNumberValue.length <= 16 && Number.isInteger(parseInt(creditCardNumberValue))) {
         creditCardNumber.style.border = '1px solid white';
     } else {
@@ -180,7 +172,7 @@ function paymentValidator(){
         response = false;
         console.log("Credit card validation fail");
     }
-    // validating zipcode and displaying change (red border) if zipcode is invalid (not 5 digits)
+    // Validating zipcode and displaying change (red border) if zipcode is invalid (not 5 digits)
    if (zipCodeValue.length === 5 && Number.isInteger(parseInt(zipCodeValue))) {
        zipCode.style.border = '1px solid white';
    } else {
@@ -189,7 +181,7 @@ function paymentValidator(){
        console.log("Zipcode validation failed");
    }
 
-   // validating cvv and displaying change (red border) if cvv is invalid (not 3 digits)
+   // Validating cvv and displaying change (red border) if cvv is invalid (not 3 digits)
    if (cvvValue.length === 3 && Number.isInteger(parseInt(cvvValue))) {
        cvv.style.border = '1px solid white';
    } else {
@@ -201,8 +193,8 @@ function paymentValidator(){
    return response;
 }
 
-//Checking when the submit button is clicked if the name, email, activities and payment methods have valid inputs
-//by calling the functions created above:
+// Checking when the submit button is clicked if the name, email, activities and payment methods have valid inputs
+// by calling the functions created above
 form.addEventListener('submit', (e) => {
     if (!nameValidator()) {
         e.preventDefault();
