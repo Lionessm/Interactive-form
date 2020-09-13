@@ -184,7 +184,6 @@ paymentMethod.addEventListener('change', (e) => {
     let cvvValue = cvv.value;
 
     // contains only numbers:
-    const reg = new RegExp('\d{13,16}');
 
     let selected = e.target.value;
     if (selected === 'credit card') {
