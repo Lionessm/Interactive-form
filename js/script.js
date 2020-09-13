@@ -167,7 +167,7 @@ function paymentValidator(){
     let response = true;
 
     if (creditCardNumberValue.length >= 13 && creditCardNumberValue.length <= 16 && Number.isInteger(parseInt(creditCardNumberValue))) {
-        creditCardNumber.style.border = '1px solid white'; // intra aici, response e inca true
+        creditCardNumber.style.border = '1px solid white';
     } else {
         creditCardNumber.style.border = '1px solid red';
         response = false;
@@ -177,13 +177,13 @@ function paymentValidator(){
    if (zipCodeValue.length === 5 && Number.isInteger(parseInt(zipCodeValue))) {
        zipCode.style.border = '1px solid white';
    } else {
-       zipCode.style.border = '1px solid red'; // intra aici, response devine false
+       zipCode.style.border = '1px solid red';
        response = false;
        console.log("Zipcode validation failed");
    }
 
    if (cvvValue.length === 3 && Number.isInteger(parseInt(cvvValue))) {
-       cvv.style.border = '1px solid white'; // intra aici, response e false
+       cvv.style.border = '1px solid white';
    } else {
        cvv.style.border = '1px solid red';
        response = false;
