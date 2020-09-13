@@ -17,7 +17,7 @@ button {
 body {
   font: 1em/1.5;
   color: rgba(6, 49, 68, 0.9);
-	background: #CDE0FB;
+	background: #D8E8E3;
 }
 
 header {
@@ -40,7 +40,7 @@ a {
 
 form {
 	padding: .875em 1.875em 1.875em;
-	background: #9BBEEF;
+	background: #C9DBFC;
 	border: 2px solid rgba(8, 63, 87, 0.6);
 	border-radius: 3px;
 }
@@ -82,14 +82,14 @@ label {
 
 input,
 select {
-	margin-bottom: 1.125em;	
+	margin-bottom: 1.125em;
 }
 
 input {
 	font-size: 1em;
 	font-weight: 500;
 	padding: .8em;
-	background: #e9f6fb;
+	background: #FDF9ED;
 	border: 2px solid rgb(111, 157, 220);
 	border-radius: 3px;
 	outline: none;
@@ -97,7 +97,7 @@ input {
 
 input:focus {
 	background: #fff;
-	border-color: #5e97b0;
+	border-color: #ffaaa5;
 	transition: border-color .4s, background-color .4s;
 }
 
@@ -109,7 +109,7 @@ input[type="radio"] {
 button {
 	color: #fff;
 	padding: .55em 1.25em;
-	background: #083f57;
+	background: #FACFD9;
 	margin: 1.25em 0 .5em;
 	cursor: pointer;
 	border: 2px solid black;
@@ -118,7 +118,7 @@ button {
 }
 
 button:hover {
-	background: #6F9DDC;
+	background: #FCDDD9;
 }
 
 input, 
