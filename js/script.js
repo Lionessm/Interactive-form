@@ -113,10 +113,90 @@ paymentMethod.addEventListener('change', (e) => {
     }
 });
 
+//name field can't be blank
+const form = document.querySelector("form");
+const name = document.querySelector("#name");
+const email = document.querySelector("#mail");
+const activitiesContainer = document.querySelector("#activities");
+const activitiesInput = document.querySelectorAll("#activities input");
+
+    function nameValidator () {
+        let nameValue = name.value;
+
+        if (nameValue.length > 0) {
+            name.style.border = '1px solid white';
+            return true;
+        } else {
+            name.style.border = '1px solid red';
+            return false;
+        }
+
+    };
+
+    function emailValidator () {
+        let emailValue = email.value;
+        let indexValue = emailValue.indexOf(`@`);
+        let lastIndexValue = emailValue.lastIndexOf(`.`);
+        if (indexValue > 1 && lastIndexValue > indexValue + 1) {
+            email.style.border = '1px solid white';
+            return true;
+        } else {
+            email.style.border = '1px solid red';
+            return false;
+        }
+    }
+
+    function activitiesValidator (){
+        for (let i = 0; i < activitiesInput.length; i++) {
+            if (activitiesInput[i].checked) {
+                activitiesContainer.style.border = '1px solid white';
+                return true;
+            }
+        }
+        activitiesContainer.style.border = '1px solid red';
+    }
 
 
+form.addEventListener('submit', (e) => {
+    if (!nameValidator()) {
+        e.preventDefault();
+        console.log('Name validator prevented submission');
+    }
 
+    if (!emailValidator()) {
+        e.preventDefault();
+        console.log('Email validator prevented submission');
+    }
 
+    if (!activitiesValidator()) {
+        e.preventDefault();
+        console.log('Activities validator prevented submission');
+    }
+});
+
+let creditCardNumber = document.getElementById('cc-num');
+let zipCode = document.getElementById('zip');
+let cvv = document.getElementById('cvv');
+
+paymentMethod.addEventListener('change', (e) => {
+    let creditCardNumberValue = creditCardNumber.value;
+    let zipCodeValue = zipCode.value;
+    let cvvValue = cvv.value;
+
+    // contains only numbers:
+    const reg = new RegExp('\d{13,16}');
+
+    let selected = e.target.value;
+    if (selected === 'credit card') {
+        if (creditCardNumberValue.length >= 13 && creditCardNumberValue.length <= 16) {
+            creditCardNumber.style.border = '1px solid white';
+            return true;
+        } else {
+            creditCardNumber.style.border = '1px solid red';
+            return false;
+        }
+    }
+});
 
 
 
