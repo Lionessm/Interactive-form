@@ -1,5 +1,7 @@
 let totalCost = 0;
-
+const otherTitle= document.getElementById('other-title');
+otherTitle.style.display = 'none';
+console.log('ajunge aici');
 // display input box for title if 'others' option is selected:
 
 function checkJobRole(val){
