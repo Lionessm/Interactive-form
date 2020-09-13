@@ -156,6 +156,42 @@ const activitiesInput = document.querySelectorAll("#activities input");
         activitiesContainer.style.border = '1px solid red';
     }
 
+function paymentValidator(){
+    let creditCardNumber = document.getElementById('cc-num');
+    let zipCode = document.getElementById('zip');
+    let cvv = document.getElementById('cvv');
+    let creditCardNumberValue = creditCardNumber.value;
+    let zipCodeValue = zipCode.value;
+    let cvvValue = cvv.value;
+
+    let response = true;
+
+    if (creditCardNumberValue.length >= 13 && creditCardNumberValue.length <= 16 && Number.isInteger(parseInt(creditCardNumberValue))) {
+        creditCardNumber.style.border = '1px solid white'; // intra aici, response e inca true
+    } else {
+        creditCardNumber.style.border = '1px solid red';
+        response = false;
+        console.log("Credit card validation fail");
+    }
+
+   if (zipCodeValue.length === 5 && Number.isInteger(parseInt(zipCodeValue))) {
+       zipCode.style.border = '1px solid white';
+   } else {
+       zipCode.style.border = '1px solid red'; // intra aici, response devine false
+       response = false;
+       console.log("Zipcode validation failed");
+   }
+
+   if (cvvValue.length === 3 && Number.isInteger(parseInt(cvvValue))) {
+       cvv.style.border = '1px solid white'; // intra aici, response e false
+   } else {
+       cvv.style.border = '1px solid red';
+       response = false;
+       console.log("Cvv validation failed");
+   }
+
+   return response;
+}
 
 form.addEventListener('submit', (e) => {
     if (!nameValidator()) {
@@ -172,30 +208,16 @@ form.addEventListener('submit', (e) => {
         e.preventDefault();
         console.log('Activities validator prevented submission');
     }
-});
 
-let creditCardNumber = document.getElementById('cc-num');
-let zipCode = document.getElementById('zip');
-let cvv = document.getElementById('cvv');
-
-paymentMethod.addEventListener('change', (e) => {
-    let creditCardNumberValue = creditCardNumber.value;
-    let zipCodeValue = zipCode.value;
-    let cvvValue = cvv.value;
-
-    // contains only numbers:
-
-    let selected = e.target.value;
-    if (selected === 'credit card') {
-        if (creditCardNumberValue.length >= 13 && creditCardNumberValue.length <= 16) {
-            creditCardNumber.style.border = '1px solid white';
-            return true;
-        } else {
-            creditCardNumber.style.border = '1px solid red';
-            return false;
+    if (paymentMethod.value === 'credit card') {
+        if (paymentValidator() === false) {
+            e.preventDefault();
+            console.log('paymentvalidator prevented submission');
         }
     }
+
 });
+
 
 
 
